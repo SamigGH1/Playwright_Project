@@ -1,6 +1,7 @@
 import { generateRandomUserDetails } from '../helpers/helpers';
 import { MyAccountPage } from '../pages/myAccountPage';
 import { RegisterPage } from '../pages/registerPage';
+import { ShopPage } from '../pages/shopPage';
 import { test as baseTest, expect as baseExpect } from '@playwright/test';
 
 const test = baseTest.extend<{
@@ -8,6 +9,7 @@ const test = baseTest.extend<{
   registerPage: RegisterPage;
   setupMyAccountPage: MyAccountPage;
   loggedInPage: MyAccountPage;
+  shopPage: ShopPage;
   testUser: {
     firstName: string;
     lastName: string;
@@ -23,6 +25,11 @@ const test = baseTest.extend<{
 
   registerPage: async ({ page }, use) => {
     await use(new RegisterPage(page));
+  },
+
+  shopPage: async ({page}, use) =>{
+    await page.goto('');
+    await use (new ShopPage (page));
   },
 
   testUser: async ({}, use) => {

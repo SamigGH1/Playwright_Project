@@ -1,5 +1,4 @@
 import {Page, Locator, expect} from '@playwright/test';
-import { MyAccountPage } from './myAccountPage';
 
 export class BasePage{
 
@@ -41,6 +40,16 @@ export class BasePage{
         await this.homeNavButton.click();
     }
 
+    async navigateToShopPage(category: string): Promise <void>
+    {
+        await this.shopByCategoryNavButton.click();
+        const categoryLink = this.page.locator(`.navbar-nav.vertical >> text=${category}`);
+        await categoryLink.waitFor({ state: 'visible', timeout: 5000 });
+        await categoryLink.click();
+        await this.page.waitForLoadState('networkidle');
+        
+    }
+
     async navigateToSpecialPage(): Promise<void>
     {
         await this.specialNavButton.click();
@@ -51,9 +60,8 @@ export class BasePage{
         await this.blogNavButton.click();
     }
 
-    async navigateToMyAccountPage(): Promise<MyAccountPage>
+    async navigateToMyAccountPage(): Promise<void>
     {
         await this.myAccountNavDropdownButton.click();
-        return new MyAccountPage(this.page);
     }
 }

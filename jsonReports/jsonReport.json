@@ -96,14 +96,14 @@
   },
   "suites": [
     {
-      "title": "loginAndRegisterTest.test.ts",
-      "file": "loginAndRegisterTest.test.ts",
+      "title": "shopTest.test.ts",
+      "file": "shopTest.test.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "Change Password",
-          "ok": true,
+          "title": "Add Multiple Products to Cart",
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -114,25 +114,55 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 2,
+                  "workerIndex": 61,
                   "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 14700,
-                  "errors": [],
+                  "status": "failed",
+                  "duration": 13601,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cart-item-total').first()\nExpected string: \u001b[32m\"4\"\u001b[39m\nReceived string: \u001b[31m\"3\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cart-item-total').first()\u001b[22m\n\u001b[2m    2 × locator resolved to <span class=\"badge badge-pill badge-info cart-item-total\">2</span>\u001b[22m\n\u001b[2m      - unexpected value \"2\"\u001b[22m\n\u001b[2m    7 × locator resolved to <span class=\"badge badge-pill badge-info cart-item-total\">3</span>\u001b[22m\n\u001b[2m      - unexpected value \"3\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cart-item-total').first()\nExpected string: \u001b[32m\"4\"\u001b[39m\nReceived string: \u001b[31m\"3\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cart-item-total').first()\u001b[22m\n\u001b[2m    2 × locator resolved to <span class=\"badge badge-pill badge-info cart-item-total\">2</span>\u001b[22m\n\u001b[2m      - unexpected value \"2\"\u001b[22m\n\u001b[2m    7 × locator resolved to <span class=\"badge badge-pill badge-info cart-item-total\">3</span>\u001b[22m\n\u001b[2m      - unexpected value \"3\"\u001b[22m\n\n    at C:\\Users\\samig\\Downloads\\Playwright_Project\\tests\\shopTest.test.ts:47:69",
+                    "location": {
+                      "file": "C:\\Users\\samig\\Downloads\\Playwright_Project\\tests\\shopTest.test.ts",
+                      "column": 69,
+                      "line": 47
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 45 |\u001b[39m     }\n \u001b[90m 46 |\u001b[39m     \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 47 |\u001b[39m     \u001b[36mawait\u001b[39m expect(shopPage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m'.cart-item-total'\u001b[39m)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoHaveText(\u001b[32m'4'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 48 |\u001b[39m })\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\samig\\Downloads\\Playwright_Project\\tests\\shopTest.test.ts",
+                        "column": 69,
+                        "line": 47
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cart-item-total').first()\nExpected string: \u001b[32m\"4\"\u001b[39m\nReceived string: \u001b[31m\"3\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cart-item-total').first()\u001b[22m\n\u001b[2m    2 × locator resolved to <span class=\"badge badge-pill badge-info cart-item-total\">2</span>\u001b[22m\n\u001b[2m      - unexpected value \"2\"\u001b[22m\n\u001b[2m    7 × locator resolved to <span class=\"badge badge-pill badge-info cart-item-total\">3</span>\u001b[22m\n\u001b[2m      - unexpected value \"3\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 45 |\u001b[39m     }\n \u001b[90m 46 |\u001b[39m     \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 47 |\u001b[39m     \u001b[36mawait\u001b[39m expect(shopPage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m'.cart-item-total'\u001b[39m)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoHaveText(\u001b[32m'4'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 48 |\u001b[39m })\u001b[0m\n\u001b[2m    at C:\\Users\\samig\\Downloads\\Playwright_Project\\tests\\shopTest.test.ts:47:69\u001b[22m"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-10-20T11:53:55.671Z",
+                  "startTime": "2025-12-07T16:35:18.555Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\samig\\Downloads\\Playwright_Project\\test-results\\shopTest-Add-Multiple-Products-to-Cart-chromium\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\samig\\Downloads\\Playwright_Project\\tests\\shopTest.test.ts",
+                    "column": 69,
+                    "line": 47
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
-          "id": "f545ce7943047c6b6c01-2407dcef0de78db31f7f",
-          "file": "loginAndRegisterTest.test.ts",
-          "line": 31,
+          "id": "b95d64b996b7c30267e7-cfb0cd24da23f91c65c6",
+          "file": "shopTest.test.ts",
+          "line": 16,
           "column": 5
         }
       ]
@@ -140,11 +170,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-10-20T11:53:53.708Z",
-    "duration": 17090.63500000001,
-    "expected": 1,
+    "startTime": "2025-12-07T16:35:16.985Z",
+    "duration": 15597.22000000067,
+    "expected": 0,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 1,
     "flaky": 0
   }
 }
