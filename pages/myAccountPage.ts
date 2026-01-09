@@ -108,5 +108,4 @@ export class MyAccountPage extends BasePage{
 
         return new MyAccountPage(this.page);
     }
-
 }

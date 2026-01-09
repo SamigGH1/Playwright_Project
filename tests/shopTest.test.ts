@@ -22,20 +22,20 @@ test ('Add Multiple Products to Cart', async({shopPage})=>{
 
     await shopPage.navigateToShopPage('Laptops & Notebooks');
 
-   let expectedCartTotal = 0;
+    let expectedCartTotal = 0;
 
     for (const product of productsToAdd) {
         await shopPage.addItemToCart(product.name);
         const notification = await shopPage.getCartNotificationDetails(product.name);
 
         // Add current product price to expected cart total
-        expectedCartTotal += parseFloat(product.price.replace('$', ''));
+        expectedCartTotal += parseFloat(product.price.replace(/[$,]/g, ''));
 
         // Extracts digit before decimial point and two digits after decimal point from notification
         // creates an array of all prices using global flag (g) and match method
         // the last element in the array is the cart total
-        const actualPrice = notification.priceText.match(/\d+\.\d{2}/g);
-        const cartTotalFromNotification = actualPrice ? parseFloat(actualPrice[actualPrice.length - 1]) : 0;
+        const actualPrice = notification.priceText.match(/\d{1,3}(?:,\d{3})*(?:\.\d{2})/g);
+        const cartTotalFromNotification = actualPrice? parseFloat(actualPrice[actualPrice.length - 1].replace(/,/g, '')): 0;
 
         await expect(notification.fullText).toContain(`Success: You have added ${product.name} to your shopping cart!`);
         await expect(notification.productName).toBe(product.name);

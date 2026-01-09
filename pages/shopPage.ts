@@ -1,13 +1,16 @@
 import {Page, Locator, expect} from '@playwright/test';
 import { BasePage } from './basePage';
+import { CartPage } from './cartPage';
 
 export class ShopPage extends BasePage{
     private readonly productTile: Locator = this.page.locator(".product-layout");
     private readonly notificationBox: Locator = this.page.locator('#notification-box-top .toast-body');
     private readonly notificationHeader: Locator = this.page.locator('#notification-box-top .toast-header span');
+    private readonly notificationViewCartButton: Locator = this.page.locator('//a[normalize-space(.)="View Cart"]');
 
     public async addItemToCart(productName: string): Promise<ShopPage> {
-        
+        await this.page.waitForLoadState('networkidle');
+
         //tackles notification box if it is present
         if (await this.notificationBox.isVisible()) {
             const closeBtn = this.page.locator('#notification-box-top .toast button[aria-label="Close"], #notification-box-top .toast button.close').first();
@@ -26,6 +29,8 @@ export class ShopPage extends BasePage{
         try {
             await cartBtn.click();
         } catch {
+            await product.scrollIntoViewIfNeeded();
+            await product.locator('.image').first().hover();
             await cartBtn.click({ force: true });
         }
 
@@ -49,5 +54,11 @@ export class ShopPage extends BasePage{
             productName,
             priceText,
         };
+    }
+
+    public async viewCartFromNotification(): Promise<CartPage> {
+        await this.notificationBox.waitFor({ state: 'visible', timeout: 5000 });
+        await this.notificationViewCartButton.click();
+        return new CartPage(this.page);
     }
 }

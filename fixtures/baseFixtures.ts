@@ -1,4 +1,5 @@
 import { generateRandomUserDetails } from '../helpers/helpers';
+import { CartPage } from '../pages/cartPage';
 import { MyAccountPage } from '../pages/myAccountPage';
 import { RegisterPage } from '../pages/registerPage';
 import { ShopPage } from '../pages/shopPage';
@@ -10,6 +11,7 @@ const test = baseTest.extend<{
   setupMyAccountPage: MyAccountPage;
   loggedInPage: MyAccountPage;
   shopPage: ShopPage;
+  cartPage: CartPage
   testUser: {
     firstName: string;
     lastName: string;
@@ -30,6 +32,11 @@ const test = baseTest.extend<{
   shopPage: async ({page}, use) =>{
     await page.goto('');
     await use (new ShopPage (page));
+  },
+
+  cartPage: async ({page}, use) =>{
+    await page.goto('');
+    await use (new CartPage (page));
   },
 
   testUser: async ({}, use) => {

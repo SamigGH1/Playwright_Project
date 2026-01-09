@@ -10,4 +10,8 @@ export function generateRandomUserDetails()
         phone: `07${Math.floor(100000000 + Math.random() * 900000000)}`, // UK-style random phone
         subscribe: 'yes', 
     };
-}   
+}  
+
+export function normaliseCurrency(value: string): number {
+    return parseFloat(value.replace(/[$,]/g, ''));
+}
